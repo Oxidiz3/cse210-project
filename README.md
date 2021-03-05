@@ -13,3 +13,4 @@
 
 # Authors
 * Porter Mecham porterme@byui.edu
+* Weston Ford for19008@byui.edu
