@@ -3,6 +3,9 @@
 # For the Queen
 You must hire your merry men to protect our queen from the onslaught of monsters
 
+## Planning 
+Lucid chart https://lucid.app/lucidchart/invitations/accept/6cab678c-ec47-400f-84ec-e73bb3a8f5d3
+
 ## Getting Started
 ---
 [how to install and run the program]
