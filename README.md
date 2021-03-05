@@ -40,3 +40,4 @@ root                    (project root folder)
 
 # Authors
 * Porter Mecham porterme@byui.edu
+* Lauren Warren sor18014@byui.edu
