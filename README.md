@@ -1,7 +1,7 @@
 # cse210-project
 
-# [PROGRAM NAME]
-[a description of the program]
+# For the Queen
+You must hire your merry men to protect our queen from the onslaught of monsters
 
 ## Getting Started
 ---
@@ -25,7 +25,7 @@ root                    (project root folder)
 
 ## Required Technologies
 ---
-[list required libraries]
+arcade
 
 ## Questions
 1. What program are we going to create? 
