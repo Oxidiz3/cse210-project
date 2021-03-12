@@ -9,6 +9,8 @@ python -m arcade.examples.starting_template
 """
 import arcade
 from forthequeen.game.scene_manager import SceneManager
+from forthequeen.game.actor_manager import ActorManager
+import forthequeen.data.constants as constants
 
 
 class Director(arcade.Window):
@@ -24,7 +26,9 @@ class Director(arcade.Window):
         super().__init__(width, height, title)
         arcade.set_background_color(arcade.color.WHITE)
 
+        # Instaniate the two managers
         self.scene_manager = SceneManager()
+        self.actor_manager = ActorManager()
 
         # If you have sprite lists, you should create them here,
         # and set them to None
@@ -32,12 +36,13 @@ class Director(arcade.Window):
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
         # Create your sprites and sprite lists here
+        main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
 
+        # add the level and center it
+        # Make sure this is always first VVV
+        main_level.position = (constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
+        self.scene_manager.current_scene.append(main_level)
         # Add scenes here VVV
-
-        sample_scene = arcade.SpriteList()
-        self.scene_manager.add_scene(sample_scene)
-        pass
 
     def on_draw(self):
         """
@@ -48,9 +53,10 @@ class Director(arcade.Window):
         # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
 
-        self.scene_manager.current_scene.draw()
-
         # Call draw() on all your sprite lists below
+        self.scene_manager.current_scene.draw()
+        self.actor_manager.actors.draw
+
 
     def on_update(self, delta_time):
         """
