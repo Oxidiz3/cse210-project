@@ -1,15 +1,11 @@
 # program entry point
 from game.director import Director
+import data.constants as constants
 import arcade
-
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-SCREEN_TITLE = "For the Queen"
-
 
 def start_game():
     """ Main method """
-    game = Director(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    game = Director(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
     game.setup()
     arcade.run()
 
