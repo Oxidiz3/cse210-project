@@ -30,7 +30,6 @@ class Menu(arcade.View):
     def on_show_view(self):
         """ Called once when view is activated. """
         self.setup()
-        arcade.set_background_color(arcade.color.BLACK)
 
     def on_hide_view(self):
         self.ui_manager.unregister_handlers()
@@ -39,11 +38,11 @@ class Menu(arcade.View):
         """ Set up this view. """
         self.ui_manager.purge_ui_elements()
 
-        y_slot = self.window.height / 4
+        y_slot = self.window.height // 4
 
         start_button = MyFlatButton(
             "Start Playing",
-            center_x=self.window.width / 2,
+            center_x=self.window.width // 2,
             center_y=y_slot * 1,
             width=250,
             # height=20
@@ -52,7 +51,7 @@ class Menu(arcade.View):
 
         quit_button = MyFlatButton(
             "Quit",
-            center_x=self.window.width / 2,
+            center_x=self.window.width // 2,
             center_y=y_slot * 1,
             width=250,
             # height=20

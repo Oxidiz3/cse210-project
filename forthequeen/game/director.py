@@ -11,6 +11,7 @@ import arcade
 from forthequeen.game.scene_manager import SceneManager
 from forthequeen.game.actor_manager import ActorManager
 from forthequeen.game.menu import Menu
+from forthequeen.game.tower_placer import TowerPlacer
 import forthequeen.data.constants as constants
 
 
@@ -30,6 +31,7 @@ class Director(arcade.Window):
         # Instantiate the two managers
         self.scene_manager = SceneManager()
         self.actor_manager = ActorManager()
+        self.tower_placer = TowerPlacer()
         self.menu = Menu()
 
         # If you have sprite lists, you should create them here,
@@ -56,11 +58,11 @@ class Director(arcade.Window):
         # This command should happen before we start drawing. It will clear
         # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
-        self.menu.on_draw()
 
         # Call draw() on all your sprite lists below
         self.scene_manager.current_scene.draw()
-        self.actor_manager.actors.draw
+        self.actor_manager.actors.draw()
+        # self.menu.on_draw()
 
     def on_update(self, delta_time):
         """
@@ -96,6 +98,8 @@ class Director(arcade.Window):
         """
         Called when the user presses a mouse button.
         """
+        sprite = 0
+        self.tower_placer.place_tower(sprite, x, y)
         pass
 
     def on_mouse_release(self, x, y, button, key_modifiers):

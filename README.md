@@ -32,7 +32,7 @@ arcade
 
 ## Questions
 1. What program are we going to create? 
-  * We are going to create a Tower Defense game simalar to the video game "Plants Vs. Zombies"
+  * We are going to create a Tower Defense game similar to the video game "Plants Vs. Zombies"
 2. What technologies will we use? 
   * We will be using python as our scripting language and the library arcade for our frontend
 3. What features will we include? 
