@@ -10,6 +10,7 @@ python -m arcade.examples.starting_template
 import arcade
 from forthequeen.game.scene_manager import SceneManager
 from forthequeen.game.actor_manager import ActorManager
+from forthequeen.game.menu import Menu
 import forthequeen.data.constants as constants
 
 
@@ -26,15 +27,18 @@ class Director(arcade.Window):
         super().__init__(width, height, title)
         arcade.set_background_color(arcade.color.WHITE)
 
-        # Instaniate the two managers
+        # Instantiate the two managers
         self.scene_manager = SceneManager()
         self.actor_manager = ActorManager()
+        self.menu = Menu()
 
         # If you have sprite lists, you should create them here,
         # and set them to None
 
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
+        self.menu.setup()
+
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
 
@@ -52,11 +56,11 @@ class Director(arcade.Window):
         # This command should happen before we start drawing. It will clear
         # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
+        self.menu.on_draw()
 
         # Call draw() on all your sprite lists below
         self.scene_manager.current_scene.draw()
         self.actor_manager.actors.draw
-
 
     def on_update(self, delta_time):
         """

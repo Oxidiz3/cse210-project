@@ -2,18 +2,22 @@ import arcade
 import arcade.gui
 from arcade.gui import UIManager
 
+
 class MyFlatButton(arcade.gui.UIFlatButton):
     """
     To capture a button click, subclass the button and override on_click.
     """
+
     def on_click(self):
         """ Called when user lets off button """
         print("Click flat button. ")
 
+
 class Menu(arcade.View):
 
     """
-    Main view. Really the only view in this example. """
+    Main view. Really the only view in this example."""
+
     def __init__(self):
         super().__init__()
 
@@ -35,11 +39,11 @@ class Menu(arcade.View):
         """ Set up this view. """
         self.ui_manager.purge_ui_elements()
 
-        y_slot = self.window.height // 4
+        y_slot = self.window.height / 4
 
         start_button = MyFlatButton(
-            'Start Playing',
-            center_x=self.window.width // 2,
+            "Start Playing",
+            center_x=self.window.width / 2,
             center_y=y_slot * 1,
             width=250,
             # height=20
@@ -47,8 +51,8 @@ class Menu(arcade.View):
         self.ui_manager.add_ui_element(start_button)
 
         quit_button = MyFlatButton(
-            'Quit',
-            center_x=self.window.width // 2,
+            "Quit",
+            center_x=self.window.width / 2,
             center_y=y_slot * 1,
             width=250,
             # height=20
