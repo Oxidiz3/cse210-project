@@ -62,6 +62,7 @@ class Director(arcade.Window):
         # Call draw() on all your sprite lists below
         self.scene_manager.current_scene.draw()
         self.actor_manager.actors.draw()
+        self.tower_placer.get_sprite_list().draw()
         # self.menu.on_draw()
 
     def on_update(self, delta_time):
@@ -98,7 +99,7 @@ class Director(arcade.Window):
         """
         Called when the user presses a mouse button.
         """
-        sprite = 0
+        sprite = arcade.Sprite(filename=constants.TOWER_IMAGE)
         self.tower_placer.place_tower(sprite, x, y)
         pass
 
