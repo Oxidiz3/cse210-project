@@ -1,4 +1,4 @@
-import forthequeen.data.constants as constants
+import data.constants as constants
 import arcade
 
 
@@ -30,7 +30,7 @@ class TowerPlacer:
         m_height = constants.SCREEN_HEIGHT / 2
 
         # how many pixels the screen is off from center
-        x_image_deviance = 48
+        x_image_deviance = 44
         y_image_deviance = 36
 
         # This breaks our x and y into a grid
@@ -57,7 +57,7 @@ class TowerPlacer:
                     self.tower_dict[x_rel, y_rel] = tower
                     print("Tower added at: ", x_rel, y_rel)
                 else:
-                    print(x_rel, x_grid)
+                    print(x_rel, x_grid, x_grid - m_width)
 
     def add_tower(self, tower, x: int, y: int):
         for key, values in self.tower_dict:
