@@ -8,11 +8,11 @@ If Python and Arcade are installed, this example can be run from the command lin
 python -m arcade.examples.starting_template
 """
 import arcade
-from forthequeen.game.scene_manager import SceneManager
-from forthequeen.game.actor_manager import ActorManager
-from forthequeen.game.menu import Menu
-from forthequeen.game.tower_placer import TowerPlacer
-import forthequeen.data.constants as constants
+from game.scene_manager import SceneManager
+from game.actor_manager import ActorManager
+from game.menu import Menu
+from game.tower_placer import TowerPlacer
+import data.constants as constants
 
 
 class Director(arcade.Window):

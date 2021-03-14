@@ -1,7 +1,7 @@
-from game.actor import Actor
+from forthequeen.game.actor import Actor
+
 
 class Enemy(Actor):
-
     def __init__(self, health, attack_damage):
         super().__init__(health, attack_damage)
 
