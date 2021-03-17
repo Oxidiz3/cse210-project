@@ -9,14 +9,5 @@ class Enemy(Actor):
         self.center_x = 100
         self.center_y = 10
 
-    def update(self):
+    def _move(self):
         self.center_y += 1
-
-
-# Tower class
-# class Tower(Sprite):
-#     def __init__(self, health, damage, cost):
-#         super().__init__()
-#         self.health = 0
-#         self.damage = 0
-#         self.cost = 0
