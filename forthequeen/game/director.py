@@ -99,8 +99,14 @@ class Director(arcade.Window):
         """
         Called when the user presses a mouse button.
         """
-        sprite = arcade.Sprite(filename=constants.TOWER_IMAGE)
-        self.tower_placer.place_tower(sprite, x, y)
+        print(button)
+        # left click
+        if button == 1:
+            sprite = arcade.Sprite(filename=constants.TOWER_IMAGE)
+            self.tower_placer.place_tower(sprite, x, y)
+        # right click
+        elif button == 4:
+            self.tower_placer.sell_tower(x, y)
         pass
 
     def on_mouse_release(self, x, y, button, key_modifiers):
