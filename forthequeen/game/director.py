@@ -8,11 +8,11 @@ If Python and Arcade are installed, this example can be run from the command lin
 python -m arcade.examples.starting_template
 """
 import arcade
-from game.scene_manager import SceneManager
-from game.actor_manager import ActorManager
-from game.actor import Actor
-from game.menu import Menu
-from game.tower_placer import TowerPlacer
+from .scene_manager import SceneManager
+from .actor_manager import ActorManager
+from .menu import Menu
+from .tower_placer import TowerPlacer
+from .tower import Tower
 import data.constants as constants
 
 
@@ -45,9 +45,6 @@ class Director(arcade.Window):
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
 
-        actor1 = Actor(100, 200)
-        actor2 = Actor(50, 150)
-
         # add the level and center it
         # Make sure this is always first VVV
         main_level.position = (constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
@@ -68,6 +65,8 @@ class Director(arcade.Window):
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
         self.menu.draw()
+        self.tower_placer.tower_dict
+
 
     def on_update(self, delta_time):
         """
@@ -95,8 +94,8 @@ class Director(arcade.Window):
         print(button)
         # left click
         if button == 1:
-            sprite = arcade.Sprite(filename=constants.TOWER_IMAGE)
-            self.tower_placer.place_tower(sprite, x, y)
+            tower = Tower('villager')
+            self.tower_placer.place_tower(tower, x, y)
         # right click
         elif button == 4:
             self.tower_placer.sell_tower(x, y)
