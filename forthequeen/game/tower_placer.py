@@ -6,7 +6,7 @@ class TowerPlacer:
     def __init__(self):
         self.num_rows = 7
         self.num_cols = 5
-        self.score = 300
+        self.score = 50
         self.tower_dict = self.fill_dict()
 
     def fill_dict(self):
@@ -98,8 +98,8 @@ class TowerPlacer:
                 # If there isn't a tower then add a tower
                 if self.tower_dict[x_rel, y_rel] == 0:
                     # :TODO Add tower.cost when tower class is finished
-                    if self.score >= 100:
-                        self.score -= 100
+                    if self.score >= tower.cost:
+                        self.score -= tower.cost
                         # Add tower to dict
                         self.tower_dict[x_rel, y_rel] = tower
                         print("Tower added at: ", x_rel, y_rel)
@@ -116,7 +116,11 @@ class TowerPlacer:
 
         # TODO: get rid of comments when towers have a cost attribute
         # cost = self.tower_dict[(x_rel, y_rel)].cost
-        cost = 100
+        if self.tower_dict[x_rel, y_rel] != 0:
+            cost = self.tower_dict[x_rel, y_rel].cost
+        else:
+            cost = 0 
+
         if 0 <= x_rel < self.num_cols:
             if 0 <= y_rel < self.num_rows:
                 if self.tower_dict[(x_rel, y_rel)] != 0:
