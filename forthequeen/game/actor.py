@@ -4,6 +4,7 @@ import arcade
 
 class Actor(ABC, arcade.Sprite):
     def __init__(self, health, attack_damage):
+        super().__init__()
         self._health = health
         self._attack_damage = attack_damage
 

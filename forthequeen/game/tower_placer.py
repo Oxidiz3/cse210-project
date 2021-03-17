@@ -43,7 +43,6 @@ class TowerPlacer:
         m_height = constants.SCREEN_HEIGHT / 2
 
         # how many pixels the screen is off from center
-        # :TODO abstract this vv
         x_image_deviance = 44
         y_image_deviance = 36
 
@@ -78,9 +77,7 @@ class TowerPlacer:
         return x_image_pos, y_image_pos
 
     def get_score(self):
-        """
-        :return: self.score
-        """
+        """ :return: self.score """
         return self.score
 
     def place_tower(self, tower: arcade.sprite.Sprite, x, y):
