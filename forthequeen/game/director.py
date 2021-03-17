@@ -63,7 +63,7 @@ class Director(arcade.Window):
         self.scene_manager.current_scene.draw()
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
-        # self.menu.on_draw()
+        self.menu.draw()
 
     def on_update(self, delta_time):
         """
