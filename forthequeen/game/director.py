@@ -10,6 +10,7 @@ python -m arcade.examples.starting_template
 import arcade
 from game.scene_manager import SceneManager
 from game.actor_manager import ActorManager
+from game.actor import Actor
 from game.menu import Menu
 from game.tower_placer import TowerPlacer
 import data.constants as constants
@@ -44,6 +45,9 @@ class Director(arcade.Window):
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
 
+        actor1 = Actor(100, 200)
+        actor2 = Actor(50, 150)
+
         # add the level and center it
         # Make sure this is always first VVV
         main_level.position = (constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
@@ -71,6 +75,7 @@ class Director(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
+
         pass
 
     def on_key_press(self, key, key_modifiers):
@@ -82,18 +87,6 @@ class Director(arcade.Window):
         """
         if key == arcade.key.ENTER:
             self.scene_manager.change_screen(0)
-
-    def on_key_release(self, key, key_modifiers):
-        """
-        Called whenever the user lets off a previously pressed key.
-        """
-        pass
-
-    def on_mouse_motion(self, x, y, delta_x, delta_y):
-        """
-        Called whenever the mouse moves.
-        """
-        pass
 
     def on_mouse_press(self, x, y, button, key_modifiers):
         """
@@ -107,10 +100,4 @@ class Director(arcade.Window):
         # right click
         elif button == 4:
             self.tower_placer.sell_tower(x, y)
-        pass
-
-    def on_mouse_release(self, x, y, button, key_modifiers):
-        """
-        Called when a user releases a mouse button.
-        """
         pass

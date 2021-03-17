@@ -77,9 +77,7 @@ class TowerPlacer:
         return x_image_pos, y_image_pos
 
     def get_score(self):
-        """
-        :return: self.score
-        """
+        """ :return: self.score """
         return self.score
 
     def place_tower(self, tower: arcade.sprite.Sprite, x, y):
