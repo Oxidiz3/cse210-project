@@ -1,59 +1,48 @@
+import random
 import arcade
-import arcade.gui
-from arcade.gui import UIManager
+import os
+import data.constants as constants
+from game.tower_placer import TowerPlacer
 
-
-class MyFlatButton(arcade.gui.UIFlatButton):
+class Menu:
     """
-    To capture a button click, subclass the button and override on_click.
+    Create the build menu for towers.
     """
-
-    def on_click(self):
-        """ Called when user lets off button """
-        print("Click flat button. ")
-
-
-class Menu(arcade.View):
-
-    """
-    Main view. Really the only view in this example."""
-
-    def __init__(self):
-        super().__init__()
-
-        self.ui_manager = UIManager()
-
-    def on_draw(self):
-        """ Draw this view. GUI elements are automatically drawn. """
-        arcade.start_render()
-
-    def on_show_view(self):
-        """ Called once when view is activated. """
-        self.setup()
-
-    def on_hide_view(self):
-        self.ui_manager.unregister_handlers()
 
     def setup(self):
-        """ Set up this view. """
-        self.ui_manager.purge_ui_elements()
+        """ Initializer """
 
-        y_slot = self.window.height // 4
+        self.tower_placer = TowerPlacer()
+        # Load the background image. Do this in the setup so we don't keep reloading it all the time.
+        self.menu_background = arcade.load_texture("menu_background.png")
+        self.tower_background = arcade.load_texture("tower_background.png")
+        self.first_tower = arcade.load_texture("first_tower.png")
 
-        start_button = MyFlatButton(
-            "Start Playing",
-            center_x=self.window.width // 2,
-            center_y=y_slot * 1,
-            width=250,
-            # height=20
-        )
-        self.ui_manager.add_ui_element(start_button)
+    def draw(self):
+        """
+        Render the screen.
+        """
 
-        quit_button = MyFlatButton(
-            "Quit",
-            center_x=self.window.width // 2,
-            center_y=y_slot * 1,
-            width=250,
-            # height=20
-        )
-        self.ui_manager.add_ui_element(quit_button)
+        # Draw the background texture
+        arcade.draw_lrwh_rectangle_textured(0, constants.SCREEN_HEIGHT - 120,
+                                            500, 120,
+                                            self.menu_background)
+
+        # Render the text
+        arcade.draw_text(f"Score: {self.tower_placer.score}", 10, 500, arcade.color.WHITE, 18)
+
+        # Draw background for towers in menu
+        arcade.draw_lrwh_rectangle_textured(120, constants.SCREEN_HEIGHT - 110,
+                                            90, 100,
+                                            self.tower_background)
+
+        # Draw tower for build menu
+        arcade.draw_lrwh_rectangle_textured(135, constants.SCREEN_HEIGHT - 65,
+                                            60, 50,
+                                            self.first_tower)
+
+        # Render name for tower
+        arcade.draw_text("Tower", 140, constants.SCREEN_HEIGHT - 90, arcade.color.WHITE, 16)
+
+        # Render price for tower
+        arcade.draw_text("100", 150, constants.SCREEN_HEIGHT - 110, arcade.color.WHITE, 16)
