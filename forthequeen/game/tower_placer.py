@@ -43,6 +43,7 @@ class TowerPlacer:
         m_height = constants.SCREEN_HEIGHT / 2
 
         # how many pixels the screen is off from center
+        # :TODO abstract this vv
         x_image_deviance = 44
         y_image_deviance = 36
 
