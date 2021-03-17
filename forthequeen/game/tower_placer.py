@@ -80,7 +80,7 @@ class TowerPlacer:
         """ :return: self.score """
         return self.score
 
-    def place_tower(self, tower: arcade.sprite.Sprite, x, y):
+    def place_tower(self, tower, x, y):
         """
         places tower into the dictionary
         :param tower: tower class
@@ -95,14 +95,13 @@ class TowerPlacer:
             if 0 <= y_rel < self.num_rows:
                 # If there isn't a tower then add a tower
                 if self.tower_dict[x_rel, y_rel] == 0:
-                    # :TODO Add tower.cost when tower class is finished
                     if self.score >= tower.cost:
                         self.score -= tower.cost
                         # Add tower to dict
                         self.tower_dict[x_rel, y_rel] = tower
                         print("Tower added at: ", x_rel, y_rel)
                     else:
-                        print("you have to no more score to spend")
+                        print("you have no more score to spend")
 
     def sell_tower(self, x, y):
         """
@@ -112,8 +111,6 @@ class TowerPlacer:
         """
         x_rel, y_rel = self.get_relative_position(x, y)
 
-        # TODO: get rid of comments when towers have a cost attribute
-        # cost = self.tower_dict[(x_rel, y_rel)].cost
         if self.tower_dict[x_rel, y_rel] != 0:
             cost = self.tower_dict[x_rel, y_rel].cost
         else:

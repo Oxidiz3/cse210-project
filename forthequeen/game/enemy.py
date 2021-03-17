@@ -1,4 +1,5 @@
 from game.actor import Actor
+from arcade.sprite import Sprite
 
 
 class Enemy(Actor):
@@ -10,3 +11,12 @@ class Enemy(Actor):
 
     def update(self):
         self.center_y += 1
+
+
+# Tower class
+# class Tower(Sprite):
+#     def __init__(self, health, damage, cost):
+#         super().__init__()
+#         self.health = 0
+#         self.damage = 0
+#         self.cost = 0

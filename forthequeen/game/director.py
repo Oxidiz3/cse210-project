@@ -45,9 +45,6 @@ class Director(arcade.Window):
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
 
-        actor1 = Actor(100, 200)
-        actor2 = Actor(50, 150)
-
         # add the level and center it
         # Make sure this is always first VVV
         main_level.position = (constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
@@ -67,6 +64,7 @@ class Director(arcade.Window):
         self.scene_manager.current_scene.draw()
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
+        self.tower_placer.tower_dict
         # self.menu.on_draw()
 
     def on_update(self, delta_time):

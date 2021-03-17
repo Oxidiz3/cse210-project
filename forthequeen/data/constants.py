@@ -13,3 +13,5 @@ TOWER_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")
 ASSETS_PATH = DIRROOT.joinpath('assets')
 PADDLE_IMAGE = DIRROOT.joinpath("images/paddle-0.png")
 BRICK_IMAGE = DIRROOT.joinpath("images/brick-0.png")
+
+# VILLAGER_TOWER = Tower(100, 200, "imagepath")
