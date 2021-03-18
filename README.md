@@ -45,3 +45,4 @@ arcade
 * Porter Mecham porterme@byui.edu
 * Zach Wilson zachwil99@byui.edu
 * Lauren Warren sor18014@byui.edu
+* Weston Ford for19008@byui.edu
