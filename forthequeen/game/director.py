@@ -8,10 +8,11 @@ If Python and Arcade are installed, this example can be run from the command lin
 python -m arcade.examples.starting_template
 """
 import arcade
-from game.scene_manager import SceneManager
-from game.actor_manager import ActorManager
-from game.menu import Menu
-from game.tower_placer import TowerPlacer
+from .scene_manager import SceneManager
+from .actor_manager import ActorManager
+from .menu import Menu
+from .tower_placer import TowerPlacer
+from .tower import Tower
 import data.constants as constants
 
 
@@ -63,7 +64,9 @@ class Director(arcade.Window):
         self.scene_manager.current_scene.draw()
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
-        # self.menu.on_draw()
+        self.menu.draw()
+        self.tower_placer.tower_dict
+
 
     def on_update(self, delta_time):
         """
@@ -71,6 +74,7 @@ class Director(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
+
         pass
 
     def on_key_press(self, key, key_modifiers):
@@ -83,28 +87,16 @@ class Director(arcade.Window):
         if key == arcade.key.ENTER:
             self.scene_manager.change_screen(0)
 
-    def on_key_release(self, key, key_modifiers):
-        """
-        Called whenever the user lets off a previously pressed key.
-        """
-        pass
-
-    def on_mouse_motion(self, x, y, delta_x, delta_y):
-        """
-        Called whenever the mouse moves.
-        """
-        pass
-
     def on_mouse_press(self, x, y, button, key_modifiers):
         """
         Called when the user presses a mouse button.
         """
-        sprite = arcade.Sprite(filename=constants.TOWER_IMAGE)
-        self.tower_placer.place_tower(sprite, x, y)
-        pass
-
-    def on_mouse_release(self, x, y, button, key_modifiers):
-        """
-        Called when a user releases a mouse button.
-        """
+        print(button)
+        # left click
+        if button == 1:
+            tower = Tower('villager')
+            self.tower_placer.place_tower(tower, x, y)
+        # right click
+        elif button == 4:
+            self.tower_placer.sell_tower(x, y)
         pass

@@ -1,4 +1,5 @@
-from forthequeen.game.actor import Actor
+from game.actor import Actor
+from arcade.sprite import Sprite
 
 
 class Enemy(Actor):
@@ -8,5 +9,5 @@ class Enemy(Actor):
         self.center_x = 100
         self.center_y = 10
 
-    def update(self):
+    def _move(self):
         self.center_y += 1
