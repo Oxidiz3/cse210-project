@@ -1,9 +1,4 @@
 """
-Starting Template
-
-Once you have learned how to use classes, you can begin your program with this
-template.
-
 If Python and Arcade are installed, this example can be run from the command line with:
 python -m arcade.examples.starting_template
 """
@@ -13,7 +8,7 @@ from .actor_manager import ActorManager
 from .menu import Menu
 from .tower_placer import TowerPlacer
 from .tower import Tower
-import data.constants as constants
+from data import constants
 
 
 class Director(arcade.Window):
@@ -65,8 +60,6 @@ class Director(arcade.Window):
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
         self.menu.draw()
-        self.tower_placer.tower_dict
-
 
     def on_update(self, delta_time):
         """
@@ -94,9 +87,7 @@ class Director(arcade.Window):
         print(button)
         # left click
         if button == 1:
-            tower = Tower('villager')
+            tower = Tower('archer')
             self.tower_placer.place_tower(tower, x, y)
-        # right click
         elif button == 4:
             self.tower_placer.sell_tower(x, y)
-        pass

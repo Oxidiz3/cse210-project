@@ -1,5 +1,4 @@
 from game.actor import Actor
-from arcade.sprite import Sprite
 
 
 class Enemy(Actor):

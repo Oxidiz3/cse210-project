@@ -1,4 +1,4 @@
-from forthequeen.game.actor import Actor
+from game.actor import Actor
 
 
 class Projectile(Actor):
