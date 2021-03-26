@@ -111,15 +111,10 @@ class TowerPlacer:
         """
         x_rel, y_rel = self.get_relative_position(x, y)
 
-        if self.tower_dict[x_rel, y_rel] != 0:
-            cost = self.tower_dict[x_rel, y_rel].cost
-        else:
-            cost = 0
-
         if 0 <= x_rel < self.num_cols:
             if 0 <= y_rel < self.num_rows:
                 if self.tower_dict[(x_rel, y_rel)] != 0:
+                    cost = self.tower_dict[x_rel, y_rel].cost
                     self.score += cost
                     self.tower_dict[(x_rel, y_rel)] = 0
 
-        print(self.score)

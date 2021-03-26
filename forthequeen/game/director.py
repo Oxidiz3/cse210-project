@@ -32,13 +32,25 @@ class Director(arcade.Window):
         self.menu = Menu()
         self.start_menu = StartMenu()
 
+        self.backgroundSong = arcade.Sound(file_name=constants.BACKGROUND_MUSIC, streaming=True)
+        self.current_player = None
+        self.music = None
+
         # If you have sprite lists, you should create them here,
         # and set them to None
+
+    def play_sound(self):
+        if self.music:
+            self.music.stop(self.current_player)
+
+        self.music = self.backgroundSong
+        self.current_player = self.music.play(loop=True)
 
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
         self.menu.setup()
         self.start_menu.setup()
+        self.play_sound()
 
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
