@@ -6,6 +6,7 @@ import arcade
 from .scene_manager import SceneManager
 from .actor_manager import ActorManager
 from .menu import Menu
+from .start_menu import StartMenu
 from .tower_placer import TowerPlacer
 from .tower import Tower
 from data import constants
@@ -29,6 +30,7 @@ class Director(arcade.Window):
         self.actor_manager = ActorManager()
         self.tower_placer = TowerPlacer()
         self.menu = Menu()
+        self.start_menu = StartMenu()
 
         # If you have sprite lists, you should create them here,
         # and set them to None
@@ -36,6 +38,7 @@ class Director(arcade.Window):
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
         self.menu.setup()
+        self.start_menu.setup()
 
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
@@ -60,6 +63,7 @@ class Director(arcade.Window):
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
         self.menu.draw()
+        #self.start_menu.draw()
 
     def on_update(self, delta_time):
         """
@@ -67,7 +71,6 @@ class Director(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-
         pass
 
     def on_key_press(self, key, key_modifiers):
