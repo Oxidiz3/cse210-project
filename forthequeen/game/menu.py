@@ -12,15 +12,13 @@ class Menu:
     def setup(self):
         """ Initializer """
 
-        self.tower_placer = TowerPlacer()
-
         # Load the background image. Do this in the setup so we don't keep reloading it all the time.
         self.menu_background = arcade.load_texture(f"{constants.ASSETS_PATH}/menu_background.png")
         self.tower_background = arcade.load_texture(f"{constants.ASSETS_PATH}/tower_background.png")
         self.villager = arcade.load_texture(f"{constants.ASSETS_PATH}/villager.png")
         self.archer = arcade.load_texture(f"{constants.ASSETS_PATH}/archer.png")
         self.knight = arcade.load_texture(f"{constants.ASSETS_PATH}/knight.png")
-        self.score = self.tower_placer.score
+        self.score = 0
 
     def draw(self):
         """
@@ -91,6 +89,6 @@ class Menu:
         arcade.draw_text("20", 415, constants.SCREEN_HEIGHT - 110, arcade.color.WHITE, 16)
 
 
-    def on_update(self):
+    def on_update(self, score):
         #update score
-        self.score = self.tower_placer.score
+        self.score = score

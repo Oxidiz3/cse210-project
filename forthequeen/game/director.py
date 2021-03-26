@@ -84,8 +84,7 @@ class Director(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        self.menu.on_update()
-        pass
+        self.menu.on_update(self.tower_placer.score)
 
     def on_key_press(self, key, key_modifiers):
         """
