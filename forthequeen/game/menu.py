@@ -13,6 +13,7 @@ class Menu:
         """ Initializer """
 
         self.tower_placer = TowerPlacer()
+
         # Load the background image. Do this in the setup so we don't keep reloading it all the time.
         self.menu_background = arcade.load_texture(f"{constants.ASSETS_PATH}/menu_background.png")
         self.tower_background = arcade.load_texture(f"{constants.ASSETS_PATH}/tower_background.png")
