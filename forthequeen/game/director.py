@@ -29,6 +29,7 @@ class Director(arcade.Window):
         self.actor_manager = ActorManager()
         self.tower_placer = TowerPlacer()
         self.menu = Menu()
+        self.tower = Tower('villager')
 
         self.backgroundSong = arcade.Sound(file_name=constants.BACKGROUND_MUSIC, streaming=True)
         self.current_player = None
@@ -90,6 +91,14 @@ class Director(arcade.Window):
         """
         if key == arcade.key.ENTER:
             self.scene_manager.change_screen(0)
+        elif key == arcade.key.KEY_1:
+            self.tower = Tower('villager')
+        elif key == arcade.key.KEY_2:
+            self.tower = Tower('archer')
+        elif key == arcade.key.KEY_3:
+            self.tower = Tower('knight')
+
+
 
     def on_mouse_press(self, x, y, button, key_modifiers):
         """
@@ -98,7 +107,6 @@ class Director(arcade.Window):
         print(button)
         # left click
         if button == 1:
-            tower = Tower('archer')
-            self.tower_placer.place_tower(tower, x, y)
+            self.tower_placer.place_tower(self.tower, x, y)
         elif button == 4:
             self.tower_placer.sell_tower(x, y)
