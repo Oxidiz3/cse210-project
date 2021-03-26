@@ -31,7 +31,7 @@ class Director(arcade.Window):
         self.tower_placer = TowerPlacer()
         self.menu = Menu()
         self.start_menu = StartMenu()
-        self.tower = Tower('villager')
+        self.tower = 'villager'
 
         self.backgroundSong = arcade.Sound(file_name=constants.BACKGROUND_MUSIC, streaming=True)
         self.current_player = None
@@ -84,7 +84,7 @@ class Director(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        pass
+        self.menu.on_update(self.tower_placer.score)
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -96,11 +96,11 @@ class Director(arcade.Window):
         if key == arcade.key.ENTER:
             self.scene_manager.change_screen(0)
         elif key == arcade.key.KEY_1:
-            self.tower = Tower('villager')
+            self.tower = 'villager'
         elif key == arcade.key.KEY_2:
-            self.tower = Tower('archer')
+            self.tower = 'archer'
         elif key == arcade.key.KEY_3:
-            self.tower = Tower('knight')
+            self.tower = 'knight'
 
 
 
@@ -111,6 +111,6 @@ class Director(arcade.Window):
         print(button)
         # left click
         if button == 1:
-            self.tower_placer.place_tower(self.tower, x, y)
+            self.tower_placer.place_tower(Tower(self.tower), x, y)
         elif button == 4:
             self.tower_placer.sell_tower(x, y)
