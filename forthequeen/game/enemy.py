@@ -4,10 +4,13 @@ import random
 import data.constants as constants
 
 
+
 class Enemy(arcade.Sprite):
     """
     A enemy sprite
     """
+    def __init__(self, health, attack_damage, filename):
+        super().__init__(health, attack_damage, filename=filename)
 
     def __init__(self, enemy_name: str = 'enemyPlaceHolder'):
 

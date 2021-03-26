@@ -1,4 +1,5 @@
 from pathlib import Path
+from game.enemy import Enemy
 
 DIR = Path(__file__).resolve().parent
 DIRROOT = DIR.resolve().parent
@@ -15,3 +16,8 @@ ASSETS_PATH = DIRROOT.joinpath('assets')
 
 # Sounds
 BACKGROUND_MUSIC = DIRROOT.joinpath("assets/HeroicDemise.wav")
+
+# Enemies
+SKELETON = Enemy(100, 25, filename="")
+BAT = Enemy(50, 15, filename="")
+SLIME = Enemy(25, 15, filename="")
