@@ -91,7 +91,7 @@ class Menu:
         arcade.draw_text("20", 415, constants.SCREEN_HEIGHT - 110, arcade.color.WHITE, 16)
 
 
-    def on_update(self, delta_time):
+    '''def on_update(self, delta_time):
 
         #update score
-        self.tower_placer.score.update()
+        self.tower_placer.score.update()'''
