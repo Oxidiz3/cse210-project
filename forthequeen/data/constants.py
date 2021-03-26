@@ -17,7 +17,3 @@ ASSETS_PATH = DIRROOT.joinpath('assets')
 # Sounds
 BACKGROUND_MUSIC = DIRROOT.joinpath("assets/HeroicDemise.wav")
 
-# Enemies
-SKELETON = Enemy(100, 25, filename="")
-BAT = Enemy(50, 15, filename="")
-SLIME = Enemy(25, 15, filename="")
