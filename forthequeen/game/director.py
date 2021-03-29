@@ -8,12 +8,16 @@ If Python and Arcade are installed, this example can be run from the command lin
 python -m arcade.examples.starting_template
 """
 import arcade
+import random
+
 from .scene_manager import SceneManager
 from .actor_manager import ActorManager
 from .menu import Menu
 from .tower_placer import TowerPlacer
 from .tower import Tower
-import data.constants as constants
+from .enemy import Enemy
+#from .add_enemy import AddEnemy
+from data import constants
 
 
 class Director(arcade.Window):
@@ -34,7 +38,15 @@ class Director(arcade.Window):
         self.actor_manager = ActorManager()
         self.tower_placer = TowerPlacer()
         self.menu = Menu()
+        self.start_menu = StartMenu()
+        #self.add_enemy = AddEnemy()
+        self.tower = 'villager'
 
+        self.backgroundSong = arcade.Sound(file_name=constants.BACKGROUND_MUSIC, streaming=True)
+        self.current_player = None
+        self.music = None
+
+        #self.start_time = time.time
         # If you have sprite lists, you should create them here,
         # and set them to None
 
@@ -44,6 +56,8 @@ class Director(arcade.Window):
 
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
+
+        arcade.schedule(self.add_enemy('slime'), 1)
 
         # add the level and center it
         # Make sure this is always first VVV
@@ -74,8 +88,9 @@ class Director(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-
-        pass
+        self.menu.on_update(self.tower_placer.score)
+        self.enemy = 'slime'
+        
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -86,6 +101,13 @@ class Director(arcade.Window):
         """
         if key == arcade.key.ENTER:
             self.scene_manager.change_screen(0)
+        elif key == arcade.key.KEY_1:
+            self.tower = 'villager'
+        elif key == arcade.key.KEY_2:
+            self.tower = 'archer'
+        elif key == arcade.key.KEY_3:
+            self.tower = 'knight'
+
 
     def on_mouse_press(self, x, y, button, key_modifiers):
         """
@@ -99,4 +121,8 @@ class Director(arcade.Window):
         # right click
         elif button == 4:
             self.tower_placer.sell_tower(x, y)
-        pass
+
+    def add_enemy(self, enemy):
+        x = random.randint(365, 425)
+        y = 170
+        self.tower_placer.place_tower(Enemy(enemy), x, y, 'enemy')
