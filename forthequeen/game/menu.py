@@ -26,8 +26,8 @@ class Menu:
         """
 
         # Draw the background texture
-        arcade.draw_lrwh_rectangle_textured(0, constants.SCREEN_HEIGHT - 120,
-                                            500, 120,
+        arcade.draw_lrwh_rectangle_textured(0, constants.SCREEN_HEIGHT - 140,
+                                            500, 140,
                                             self.menu_background)
 
         # Render the text
@@ -36,8 +36,8 @@ class Menu:
 
         '''draw villager tower'''
         # Draw background for towers in menu
-        arcade.draw_lrwh_rectangle_textured(120, constants.SCREEN_HEIGHT - 110,
-                                            90, 100,
+        arcade.draw_lrwh_rectangle_textured(120, constants.SCREEN_HEIGHT - 130,
+                                            90, 120,
                                             self.tower_background)
 
         # Draw tower for build menu
@@ -51,11 +51,14 @@ class Menu:
         # Render price for tower
         arcade.draw_text("10", 155, constants.SCREEN_HEIGHT - 110, arcade.color.WHITE, 16)
 
+        # Render button to press for tower
+        arcade.draw_text("Press 1", 140, constants.SCREEN_HEIGHT - 130, arcade.color.WHITE, 16)
+
 
         '''draw archer tower'''
         # Draw background for towers in menu
-        arcade.draw_lrwh_rectangle_textured(250, constants.SCREEN_HEIGHT - 110,
-                                            90, 100,
+        arcade.draw_lrwh_rectangle_textured(250, constants.SCREEN_HEIGHT - 130,
+                                            90, 120,
                                             self.tower_background)
 
         # Draw tower for build menu
@@ -69,12 +72,15 @@ class Menu:
         # Render price for tower
         arcade.draw_text("15", 285, constants.SCREEN_HEIGHT - 110, arcade.color.WHITE, 16)
 
+        # Render button to press for tower
+        arcade.draw_text("Press 2", 270, constants.SCREEN_HEIGHT - 130, arcade.color.WHITE, 16)
+
 
 
         '''draw knight tower'''
         # Draw background for towers in menu
-        arcade.draw_lrwh_rectangle_textured(380, constants.SCREEN_HEIGHT - 110,
-                                            90, 100,
+        arcade.draw_lrwh_rectangle_textured(380, constants.SCREEN_HEIGHT - 130,
+                                            90, 120,
                                             self.tower_background)
 
         # Draw tower for build menu
@@ -87,6 +93,9 @@ class Menu:
 
         # Render price for tower
         arcade.draw_text("20", 415, constants.SCREEN_HEIGHT - 110, arcade.color.WHITE, 16)
+
+        # Render button to press for tower
+        arcade.draw_text("Press 3", 400, constants.SCREEN_HEIGHT - 130, arcade.color.WHITE, 16)
 
 
     def on_update(self, score):

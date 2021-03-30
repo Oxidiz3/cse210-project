@@ -6,13 +6,12 @@ import arcade
 from .scene_manager import SceneManager
 from .actor_manager import ActorManager
 from .menu import Menu
-from .start_menu import StartMenu
 from .tower_placer import TowerPlacer
 from .tower import Tower
 from data import constants
 
 
-class Director(arcade.Window):
+class Director(arcade.View):
     """
     Main application class.
 
@@ -22,7 +21,7 @@ class Director(arcade.Window):
     """
 
     def __init__(self, width, height, title):
-        super().__init__(width, height, title)
+        super().__init__()
         arcade.set_background_color(arcade.color.WHITE)
 
         # Instantiate the two managers
@@ -30,7 +29,6 @@ class Director(arcade.Window):
         self.actor_manager = ActorManager()
         self.tower_placer = TowerPlacer()
         self.menu = Menu()
-        self.start_menu = StartMenu()
         self.tower = 'villager'
 
         self.backgroundSong = arcade.Sound(file_name=constants.BACKGROUND_MUSIC, streaming=True)
@@ -50,7 +48,6 @@ class Director(arcade.Window):
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
         self.menu.setup()
-        self.start_menu.setup()
         self.play_sound()
 
         # Create your sprites and sprite lists here
@@ -76,7 +73,6 @@ class Director(arcade.Window):
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
         self.menu.draw()
-        #self.start_menu.draw()
 
     def on_update(self, delta_time):
         """
