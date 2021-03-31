@@ -1,10 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 import arcade
 
 
 class Actor(ABC, arcade.Sprite):
-    def __init__(self, health, attack_damage):
-        super().__init__()
+    def __init__(self, health, attack_damage, filename):
+        super().__init__(filename=filename)
         self._health = health
         self._attack_damage = attack_damage
 

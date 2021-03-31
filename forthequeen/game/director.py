@@ -1,9 +1,4 @@
 """
-Starting Template
-
-Once you have learned how to use classes, you can begin your program with this
-template.
-
 If Python and Arcade are installed, this example can be run from the command line with:
 python -m arcade.examples.starting_template
 """
@@ -20,7 +15,7 @@ from .enemy import Enemy
 from data import constants
 
 
-class Director(arcade.Window):
+class Director(arcade.View):
     """
     Main application class.
 
@@ -30,7 +25,7 @@ class Director(arcade.Window):
     """
 
     def __init__(self, width, height, title):
-        super().__init__(width, height, title)
+        super().__init__()
         arcade.set_background_color(arcade.color.WHITE)
 
         # Instantiate the two managers
@@ -50,9 +45,17 @@ class Director(arcade.Window):
         # If you have sprite lists, you should create them here,
         # and set them to None
 
+    def play_sound(self):
+        if self.music:
+            self.music.stop(self.current_player)
+
+        self.music = self.backgroundSong
+        self.current_player = self.music.play(loop=True)
+
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
         self.menu.setup()
+        self.play_sound()
 
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
@@ -79,8 +82,6 @@ class Director(arcade.Window):
         self.actor_manager.actors.draw()
         self.tower_placer.get_sprite_list().draw()
         self.menu.draw()
-        self.tower_placer.tower_dict
-
 
     def on_update(self, delta_time):
         """
@@ -90,7 +91,6 @@ class Director(arcade.Window):
         """
         self.menu.on_update(self.tower_placer.score)
         self.enemy = 'slime'
-        
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -108,7 +108,6 @@ class Director(arcade.Window):
         elif key == arcade.key.KEY_3:
             self.tower = 'knight'
 
-
     def on_mouse_press(self, x, y, button, key_modifiers):
         """
         Called when the user presses a mouse button.
@@ -116,13 +115,13 @@ class Director(arcade.Window):
         print(button)
         # left click
         if button == 1:
-            tower = Tower('villager')
-            self.tower_placer.place_tower(tower, x, y)
-        # right click
+            self.tower_placer.place_tower(Tower(self.tower), x, y)
         elif button == 4:
             self.tower_placer.sell_tower(x, y)
+
 
     def add_enemy(self, enemy):
         x = random.randint(365, 425)
         y = 170
         self.tower_placer.place_tower(Enemy(enemy), x, y, 'enemy')
+

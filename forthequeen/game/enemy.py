@@ -1,10 +1,9 @@
-from game.actor import Actor
-from arcade.sprite import Sprite
+# from .actor import Actor
+import arcade
+import random
+import data.constants as constants
 
 
-class Enemy(Actor):
-    def __init__(self, health, attack_damage):
-        super().__init__(health, attack_damage)
 
 class Enemy(arcade.Sprite):
     """
@@ -35,6 +34,7 @@ class Enemy(arcade.Sprite):
     
     def move(self):
         self.change_y = 100
+    
+    def move(self):
+        self.center_y -= 1
 
-    def _move(self):
-        self.center_y += 1
