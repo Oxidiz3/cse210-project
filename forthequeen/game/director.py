@@ -62,7 +62,7 @@ class Director(arcade.View):
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
 
-        # arcade.schedule(self.add_enemy('slime'), 1)
+        arcade.schedule(self.add_enemy, 1)
 
         # add the level and center it
         # Make sure this is always first VVV
@@ -148,8 +148,8 @@ class Director(arcade.View):
             self.tower_placer.sell_tower(x, y)
 
 
-    def add_enemy(self, enemy):
+    def add_enemy(self, delta_time=None, enemy_id:str='slime'):
         x = random.randint(365, 425)
         y = 170
-        self.tower_placer.place_tower(Enemy(enemy), x, y, 'enemy')
+        self.tower_placer.place_tower(Enemy(enemy_id), x, y, 'enemy')
 

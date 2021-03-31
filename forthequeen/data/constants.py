@@ -15,7 +15,7 @@ TOWER_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")
 ENEMY_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")
 ASSETS_PATH = DIRROOT.joinpath('assets')
 ENEMY_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")
-PROJECTILE_IMAGE = DIRROOT.joinpath("assets/projectile.png")
+PROJECTILE_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")#projectile.png")
 
 
 # Sounds
