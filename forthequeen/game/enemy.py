@@ -35,3 +35,7 @@ class Enemy(arcade.Sprite):
     def move(self):
         self.change_y = 100
 
+    def take_damage(self, damage):
+        self.health -= damage
+        if self.health < 0:
+            self.remove_from_sprite_lists()

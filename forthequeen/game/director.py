@@ -11,6 +11,7 @@ from .menu import Menu
 from .tower_placer import TowerPlacer
 from .tower import Tower
 from .enemy import Enemy
+from .projectile_manager import ProjectileManager
 # from .add_enemy import AddEnemy
 from data import constants
 
@@ -31,8 +32,10 @@ class Director(arcade.View):
         # Instantiate the two managers
         self.scene_manager = SceneManager()
         self.actor_manager = ActorManager()
+        self.projectile_manager = ProjectileManager()
         self.tower_placer = TowerPlacer()
         self.menu = Menu()
+
         #self.add_enemy = AddEnemy()
         self.tower = 'villager'
 
@@ -90,6 +93,32 @@ class Director(arcade.View):
         """
         self.menu.on_update(self.tower_placer.score)
         self.enemy = 'slime'
+        self.get_collisions()
+
+    def get_collisions(self):
+        enemy_projectiles = self.projectile_manager.enemyProjectiles
+        friendly_projectiles = self.projectile_manager.friendlyProjectiles
+        for bullet in enemy_projectiles:
+            hit_list = arcade.check_for_collision_with_list(bullet, self.tower_placer.get_sprite_list()
+                                                            )
+            if len(hit_list) > 0:
+                bullet.remove_from_sprite_lists()
+
+            for tower in hit_list:
+                _tower = self.tower_placer.tower_dict[tower.position[0], tower.position[1]]
+                _tower.take_damage(bullet.damage)
+
+        for projectile in friendly_projectiles:
+            hit_list = arcade.check_for_collision_with_list(projectile, self.actor_manager.actors)
+
+            if len(hit_list) > 0:
+                projectile.remove_from_sprite_lists()
+
+            for enemy in hit_list:
+                _enemy = self.actor_manager
+                enemy.take_damage(projectile.damage)
+
+
 
     def on_key_press(self, key, key_modifiers):
         """

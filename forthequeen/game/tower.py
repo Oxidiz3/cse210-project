@@ -33,5 +33,9 @@ class Tower(arcade.Sprite):
 
     def attack(self):
         #call this to initiate an attack
-        Projectile(self.damage, self._get_position)
+        return Projectile(-10, self.damage)
 
+    def take_damage(self, damage):
+        self.health -= damage
+        if self.health < 0:
+            self.remove_from_sprite_lists()
