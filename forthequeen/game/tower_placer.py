@@ -54,6 +54,7 @@ class TowerPlacer:
         x_rel = (x_grid - m_width) / _tile_size
         y_rel = -1 * (y_grid - m_height) / _tile_size
 
+        # Turn them back into an int
         x_rel = int(x_rel)
         y_rel = int(y_rel)
 

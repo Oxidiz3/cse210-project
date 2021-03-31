@@ -11,7 +11,7 @@ from .menu import Menu
 from .tower_placer import TowerPlacer
 from .tower import Tower
 from .enemy import Enemy
-#from .add_enemy import AddEnemy
+# from .add_enemy import AddEnemy
 from data import constants
 
 
@@ -33,7 +33,6 @@ class Director(arcade.View):
         self.actor_manager = ActorManager()
         self.tower_placer = TowerPlacer()
         self.menu = Menu()
-        self.start_menu = StartMenu()
         #self.add_enemy = AddEnemy()
         self.tower = 'villager'
 
@@ -60,7 +59,7 @@ class Director(arcade.View):
         # Create your sprites and sprite lists here
         main_level = arcade.Sprite(filename=constants.LEVEL_IMAGE)
 
-        arcade.schedule(self.add_enemy('slime'), 1)
+        # arcade.schedule(self.add_enemy('slime'), 1)
 
         # add the level and center it
         # Make sure this is always first VVV

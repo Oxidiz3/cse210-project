@@ -34,7 +34,4 @@ class Enemy(arcade.Sprite):
     
     def move(self):
         self.change_y = 100
-    
-    def move(self):
-        self.center_y -= 1
 

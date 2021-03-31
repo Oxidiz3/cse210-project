@@ -12,6 +12,7 @@ SCREEN_TITLE = "For the Queen"
 TILE_SIZE = 16
 LEVEL_IMAGE = DIRROOT.joinpath("assets/levelMap.png")
 TOWER_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")
+ENEMY_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")
 ASSETS_PATH = DIRROOT.joinpath('assets')
 ENEMY_IMAGE = DIRROOT.joinpath("assets/towerPlaceHolder.png")
 
