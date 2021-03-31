@@ -80,19 +80,21 @@ class TowerPlacer:
         """ :return: self.score """
         return self.score
 
-    def place_tower(self, tower, x, y):
+    def place_tower(self, tower, x, y, type:str = 'tower'):
         """
         places tower into the dictionary
         :param tower: tower class
         :param x: x coord of mouse
         :param y: y coord of mouse
         """
+        print(x)
+        print(y)
         x_rel, y_rel = self.get_relative_position(x, y)
         x_image_pos, y_image_pos = self.get_image_pos(x, y)
         tower.set_position(x_image_pos, y_image_pos)
 
         if 0 <= x_rel < self.num_cols:
-            if 0 <= y_rel < self.num_rows:
+            if 0 <= y_rel < self.num_rows or type != 'tower':
                 # If there isn't a tower then add a tower
                 if self.tower_dict[x_rel, y_rel] == 0:
                     if self.score >= tower.cost:

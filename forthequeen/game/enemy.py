@@ -30,6 +30,10 @@ class Enemy(arcade.Sprite):
         
         self.health = enemy['health']
         self.damage = enemy['attack_damage']
+        self.cost = 0
+    
+    def move(self):
+        self.change_y = 100
     
     def move(self):
         self.center_y -= 1

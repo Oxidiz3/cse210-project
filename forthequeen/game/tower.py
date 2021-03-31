@@ -1,7 +1,7 @@
 # from .actor import Actor
 import arcade
 import data.constants as constants
-
+from .projectile import Projectile
 
 class Tower(arcade.Sprite):
     """
@@ -25,3 +25,13 @@ class Tower(arcade.Sprite):
         self.health = tower['health']
         self.damage = tower['attack_damage']
         self.cost = tower['cost']
+
+        # already implemented in the sprites class
+        # self.coordinates = None #tower['coordinates']
+    # def set_coordinates(self, x, y):
+    #     self.coordinates = (x,y)
+
+    def attack(self):
+        #call this to initiate an attack
+        Projectile(self.damage, self._get_position)
+
