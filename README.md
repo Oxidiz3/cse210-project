@@ -8,7 +8,7 @@ Lucid chart https://lucid.app/lucidchart/invitations/accept/6cab678c-ec47-400f-8
 
 ## Getting Started
 ---
-[how to install and run the program]
+clone the repository. Then open your terminal and cd into the game folder and run "python __main__.py"
 
 ## Project Structure
 ---
